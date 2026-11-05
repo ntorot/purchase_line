@@ -1,0 +1,53 @@
+<odoo>
+    <record id="action_report_purchase_line_wizard" model="ir.actions.act_window">
+        <field name="name">Reporte Líneas de Compra</field>
+        <field name="res_model">purchase.lines.report</field> 
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="view_report_purchase_line_wizard_form"/>
+    </record>
+
+    <record id="action_server_open_purchase_wizard" model="ir.actions.server">
+        <field name="name">Reporte Líneas de Compra</field>
+        <field name="model_id" ref="account.model_account_move"/> 
+        <field name="binding_model_id" ref="account.model_account_move"/> 
+        <field name="binding_view_types">list,form</field> 
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="sequence" eval="200"/> 
+        <field name="code">
+action = env.ref('purchase_line.action_report_purchase_line_wizard').read()[0]
+action['target'] = 'new'  # SE REFUERZA EL TARGET AQUÍ
+action['context'] = env.context
+        </field>
+    </record>
+
+    <record id="purchase_lines_xls_action_report" model="ir.actions.report">
+        <field name="name">Reporte Líneas de Compra XLS</field>
+        <field name="model">purchase.lines.report</field> 
+        <field name="report_type">xlsx</field>
+        <field name="report_name">purchase_line.purchase_lines_xls_report</field> 
+        <field name="print_report_name">"Reporte Líneas de Compra (XLSX)"</field>
+    </record>
+    
+    <record id="import_costs_xls_action_report" model="ir.actions.report">
+        <field name="name">Costos de Importación Aplicados (Excel)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">purchase_line.report_import_costs_xls</field>
+        <field name="print_report_name">"Reporte de Costos de Importación Aplicados"</field>
+    </record>
+    
+    <record id="action_server_generate_purchase_xls" model="ir.actions.server">
+        <field name="name">Costos de Importación Aplicados</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="state">code</field>
+        <field name="type">ir.actions.server</field>
+        <field name="sequence" eval="201"/>
+        <field name="code">
+action = env.ref('purchase_line.import_costs_xls_action_report').report_action(records)
+        </field>
+    </record>
+</odoo>

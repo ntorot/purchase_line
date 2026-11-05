@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_libro_mayor_clean">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="page" style="font-size: 12px; font-family: sans-serif; border: none !important;">
+
+                    <div class="text-center mb-3">
+                        <h5 style="margin: 0; font-weight: bold; color: #444;"><t t-esc="res_company.name"/></h5>
+                        <h5 style="font-weight: bold; letter-spacing: 1px; margin-bottom: 3px;">LIBRO MAYOR</h5>
+                        <p class="text-muted" style="font-size: 12px; margin: 0;">
+                            <strong>Periodo:</strong> <t t-esc="context_month"/>
+                        </p>
+                    </div>
+                    
+                    <table style="font-size: 11px; width: 100%; border: 0 none transparent !important; border-collapse: collapse !important;">
+                        <thead>
+                            <tr style="border: 0 none transparent !important;">
+                                <th style="width: 60%; border: 0 none transparent !important; padding-bottom: 8px; font-weight: bold;">Nombre de la Cuenta</th>
+                                <th class="text-end" style="width: 20%; border: 0 none transparent !important; padding-bottom: 8px; font-weight: bold;">Débito</th>
+                                <th class="text-end" style="width: 20%; border: 0 none transparent !important; padding-bottom: 8px; font-weight: bold;">Crédito</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="t_debe" t-value="0.0"/>
+                            <t t-set="t_haber" t-value="0.0"/>
+                            <t t-foreach="lines" t-as="line">
+                                <tr style="border: 0 none transparent !important;">
+                                    <td style="border: 0 none transparent !important; padding: 4px 0;"><span t-esc="line['name']"/></td>
+                                    <td class="text-end" style="border: 0 none transparent !important; padding: 4px 0;">
+                                        <span t-esc="'{:,.2f}'.format(line['debe']).replace(',', 'X').replace('.', ',').replace('X', '.')"/>
+                                    </td>
+                                    <td class="text-end" style="border: 0 none transparent !important; padding: 4px 0;">
+                                        <span t-esc="'{:,.2f}'.format(line['haber']).replace(',', 'X').replace('.', ',').replace('X', '.')"/>
+                                    </td>
+                                </tr>
+                                <t t-set="t_debe" t-value="t_debe + line['debe']"/>
+                                <t t-set="t_haber" t-value="t_haber + line['haber']"/>
+                            </t>
+                            <tr style="font-weight: bold; border: 0 none transparent !important;">
+                                <td style="border: 0 none transparent !important; padding-top: 15px;">TOTALES</td>
+                                <td class="text-end" style="border: 0 none transparent !important; padding-top: 15px;">
+                                    <span t-esc="'{:,.2f}'.format(t_debe).replace(',', 'X').replace('.', ',').replace('X', '.')"/>
+                                </td>
+                                <td class="text-end" style="border: 0 none transparent !important; padding-top: 15px;">
+                                    <span t-esc="'{:,.2f}'.format(t_haber).replace(',', 'X').replace('.', ',').replace('X', '.')"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <record id="action_report_libro_mayor" model="ir.actions.report">
+        <field name="name">Libro Mayor</field>
+        <field name="model">account.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">purchase_line.report_libro_mayor_clean</field>
+        <field name="report_file">purchase_line.report_libro_mayor_clean</field>
+        <field name="paperformat_id" ref="purchase_line.paperformat_balance_mes_clean"/>
+        <field name="print_report_name">'Libro_Mayor'</field>
+    </record>
+</odoo>

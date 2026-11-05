@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?><!--data-->
+<odoo noupdate="1">
+    <record id="column_order_numbers" model="purchase.lines.report.column">
+        <field name="name">N° Orden de Compra</field>
+        <field name="field_name">order_numbers</field>
+        <field name="sequence">1</field>
+    </record>
+    
+    <record id="column_partner_id" model="purchase.lines.report.column">
+        <field name="name">Proveedor</field> <field name="field_name">partner_id</field>
+        <field name="sequence">2</field>
+    </record>
+    
+    <record id="column_ref" model="purchase.lines.report.column">
+        <field name="name">N° Factura</field>
+        <field name="field_name">ref</field>
+        <field name="sequence">3</field>
+    </record>
+    
+    <record id="column_invoice_date" model="purchase.lines.report.column">
+        <field name="name">Fecha Factura</field>
+        <field name="field_name">invoice_date</field>
+        <field name="sequence">4</field>
+    </record>
+    
+    <record id="column_currency_invoice_id" model="purchase.lines.report.column">
+        <field name="name">Moneda Factura</field>
+        <field name="field_name">currency_invoice_id</field>
+        <field name="sequence">5</field>
+    </record>
+    
+    <record id="column_product_code" model="purchase.lines.report.column">
+        <field name="name">Cód Producto</field>
+        <field name="field_name">product_code</field>
+        <field name="sequence">6</field>
+    </record>
+    
+    <record id="column_product_name" model="purchase.lines.report.column">
+        <field name="name">Desc Producto</field>
+        <field name="field_name">product_name</field>
+        <field name="sequence">7</field>
+    </record>
+    
+    <record id="column_product_categ_id" model="purchase.lines.report.column">
+        <field name="name">Categoría Producto</field>
+        <field name="field_name">product_categ_id</field>
+        <field name="sequence">8</field>
+    </record>
+
+    <record id="column_quantity" model="purchase.lines.report.column">
+        <field name="name">Cantidad</field>
+        <field name="field_name">quantity</field>
+        <field name="sequence">9</field>
+    </record>
+    
+    <record id="column_product_uom_id" model="purchase.lines.report.column">
+        <field name="name">UdM</field>
+        <field name="field_name">product_uom_id</field>
+        <field name="sequence">10</field>
+    </record>
+    
+    <record id="column_order_date" model="purchase.lines.report.column">
+        <field name="name">Fecha de Orden</field>
+        <field name="field_name">order_date</field>
+        <field name="sequence">11</field>
+    </record>
+
+    <record id="column_unit_cost" model="purchase.lines.report.column">
+        <field name="name">Costo Unitario</field>
+        <field name="field_name">unit_cost</field>
+        <field name="sequence">12</field>
+    </record>
+    
+    <record id="column_total_cost" model="purchase.lines.report.column">
+        <field name="name">Costo Total</field>
+        <field name="field_name">total_cost</field>
+        <field name="sequence">13</field>
+    </record>
+
+    <record id="column_invoice_rate" model="purchase.lines.report.column">
+        <field name="name">Tasa Factura</field>
+        <field name="field_name">invoice_rate</field>
+        <field name="sequence">14</field>
+    </record>
+
+    <record id="column_unit_price_usd" model="purchase.lines.report.column">
+        <field name="name">Costo Unit. USD</field>
+        <field name="field_name">unit_price_usd</field>
+        <field name="sequence">15</field>
+    </record>
+
+    <record id="column_price_subtotal_usd" model="purchase.lines.report.column">
+        <field name="name">Subtotal USD</field>
+        <field name="field_name">price_subtotal_usd</field>
+        <field name="sequence">16</field>
+    </record>
+
+    <record id="column_lote" model="purchase.lines.report.column">
+        <field name="name">Lote</field>
+        <field name="field_name">lote</field>
+        <field name="sequence">17</field>
+    </record>
+
+    <record id="column_packaging_qty" model="purchase.lines.report.column">
+        <field name="name">Cant. Embalaje</field>
+        <field name="field_name">packaging_qty</field>
+        <field name="sequence">18</field>
+    </record>
+
+    <record id="column_packaging_uom_id" model="purchase.lines.report.column">
+        <field name="name">UdM Embalaje</field>
+        <field name="field_name">packaging_uom_id</field>
+        <field name="sequence">19</field>
+    </record>
+    
+    <record id="column_receipt_number" model="purchase.lines.report.column">
+        <field name="name">Nº de Recepción</field>
+        <field name="field_name">receipt_number</field>
+        <field name="sequence">20</field>
+    </record>
+    
+</odoo>

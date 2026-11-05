@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_purchase_lines_report,Purchase Lines Report User Access,model_purchase_lines_report,base.group_user,1,1,1,1
+access_purchase_lines_report_register,Purchase Lines Report Register User Access,model_purchase_lines_report_register,base.group_user,1,1,1,1
+access_purchase_lines_report_column,Purchase Lines Report Column User Access,model_purchase_lines_report_column,base.group_user,1,1,1,1
+access_purchase_lines_report_column_manager,Purchase Lines Report Column Manager Access,model_purchase_lines_report_column,base.group_system,1,1,1,1

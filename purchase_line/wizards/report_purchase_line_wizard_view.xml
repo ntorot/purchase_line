@@ -1,0 +1,47 @@
+<odoo>
+    <record id="view_report_purchase_line_wizard_form" model="ir.ui.view">
+        <field name="name">purchase.lines.report.form</field>
+        <field name="model">purchase.lines.report</field> 
+        <field name="arch" type="xml">
+            <form string="Reporte de Líneas de Compra">
+                <p class="oe_grey">
+                    Mediante este asistente usted podrá generar el reporte de líneas de compras a partir de las facturas de proveedor seleccionadas.
+                </p>
+                
+                <sheet>
+                    <notebook>
+                        <page string="Líneas de Compra" name="purchase_lines">
+                            <group>
+                                <field name="line_ids" force_save="1" nolabel="1" limit="40">
+                                    <list create="0" delete="0"> 
+                                        <field name="order_numbers" readonly="1"/> 
+                                        <field name="partner_id" widget="selection" readonly="1" string="Proveedor"/>
+                                        <field name="ref" optional="show" readonly="1" string="Ref. Factura"/>
+                                        <field name="invoice_date" string="Fecha Factura" optional="show" readonly="1"/> 
+                                        <field name="product_code" optional="show"/>
+                                        <field name="product_name" optional="show"/>
+                                        <field name="quantity" readonly="1" sum="Total Cantidad"/>
+                                        <field name="product_uom_id" widget="selection" optional="show" readonly="1"/>
+                                        <field name="unit_price_ves" readonly="1" sum="Total Precio Unit VES"/> 
+                                        <field name="price_subtotal_ves" readonly="1" sum="Total Subtotal VES"/> 
+                                    </list>
+                                </field>
+                            </group>
+                        </page>
+
+                        <page string="Configuración">
+                            <group>
+                                <field name="columns_to_show_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                
+                <footer>
+                    <button string="Crear reporte xls" name="act_confirm_xls" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cerrar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
